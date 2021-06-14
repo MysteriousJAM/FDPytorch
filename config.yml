@@ -1,0 +1,66 @@
+TRAIN:
+  DATASETS:
+  -
+    TYPE: TRAIN
+    DATA: IMG
+    IMG_BASE_PATH: ../Datasets/Faces/
+    MARKUP_PATH: ../Datasets/Faces/train_1.2_coco.json
+
+  -
+    TYPE: VAL
+    DATA: IMG
+    IMG_BASE_PATH: ../Datasets/Faces/
+    MARKUP_PATH: ../Datasets/Faces/corrected_hard_test.json
+
+#  path to save snapshots, logging
+  EXP_PATH: exps/
+
+  EDGE: True
+
+  NET_NAME: 'mobilenet0.125'
+
+  OPTIMIZER: 'sgd'
+  
+  BACKBONE_CHANNELS: [64, 128]
+
+  FILTERS: [128, 128, 128]
+  #  FILTERS: [160, 160, 160]
+
+  STEPS: [16, 32, 64, 128, 256]
+  
+  STEP_MULTIPLIER: 4
+
+  EXPAND_MAX_RATIO: 4.0
+
+  MEAN_RGB: [0.485, 0.456, 0.406]
+
+  STD_RGB: [0.229, 0.224, 0.225]
+
+  MAX_RANDOM_AREA: 1.0
+
+  MIN_RANDOM_AREA: 0.3
+
+  MAX_ASPECT_RATIO: 2.0
+
+#  batch size per gpu
+  BATCH_SIZE: 16
+  START_EPOCH: 0
+#  RESUME: exps/2021-06-07--11-44-26/snapshots/epoch_52.pt
+  SNAPSHOT_FREQUENCY: 1
+#  number workers for loading data
+  NUM_WORKERS: 4
+
+  NUM_EPOCH: 81
+
+  PRETRAINED_BASE: True
+
+  LR: 0.01
+  WD: 0.0005
+  LR_DECAY: 0.1
+  MOMENTUM: 0.9
+  LR_DECAY_EPOCH: [55,]
+  LOG_INTERVAL: 100
+
+  VAL_FREQUENCY: 100
+
+  INPUT_SIZE: 1280
